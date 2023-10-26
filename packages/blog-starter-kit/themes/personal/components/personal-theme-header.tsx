@@ -19,14 +19,13 @@ export const PersonalHeader = () => {
 	const navbarItems = publication.preferences.navbarItems.filter(hasUrl);
 	const visibleItems = navbarItems.slice(0, 3);
 	const hiddenItems = navbarItems.slice(3);
-	const domainName = 'https://starter-kit-personal.vercel.app/'; // Replace with your actual domain name
+	const domainName = 'https://starter-kit-personal.vercel.app/';
 
 	const customNavList = [
 		{ label: 'Software Eng', url: 'series/software-engineering-101' },
 		{ label: 'No Code', url: 'series/no-code' },
 		{ label: 'AI', url: 'series/artificial-intelligence' },
 		{ label: 'Mobile Dev', url: 'series/mobile-dev' },
-		// Add more custom items as needed
 	];
 
 	const navList = (
