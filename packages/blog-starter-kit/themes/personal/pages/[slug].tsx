@@ -142,10 +142,10 @@ export default function PostOrPage({ publication, post, page }: Props) {
 		<AppProvider publication={publication} post={post}>
 			<Layout>
 				<Container className="mx-auto flex gap-10 px-8 py-10 md:flex-row">
-					<div className="scrollbar-hidden sm-max:hidden md:w-auto">
+					<div className=" sm-max:hidden md:w-1/4">
 						{/* Table of Contents */}
 						{post && post.features.tableOfContents.isEnabled && (
-							<div className="toc-wrapper">
+							<div className="toc-wrapper no-scrollbar">
 								<PostTOC />
 							</div>
 						)}

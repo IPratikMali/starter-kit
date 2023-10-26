@@ -8,8 +8,21 @@
 
 .toc-wrapper {
 	position: sticky;
-	top: 20px; /* Adjust this value as needed */
-	max-height: 80vh; /* Adjust this value to limit the TOC height */
+	top: 20px;
+	max-height: 80vh;
 	overflow-y: auto;
-	overflow: hidden;
+}
+@layer utilities {
+	@variants responsive {
+		/* Hide scrollbar for Chrome, Safari and Opera */
+		.no-scrollbar::-webkit-scrollbar {
+			display: none;
+		}
+
+		/* Hide scrollbar for IE, Edge and Firefox */
+		.no-scrollbar {
+			-ms-overflow-style: none; /* IE and Edge */
+			scrollbar-width: none; /* Firefox */
+		}
+	}
 }
