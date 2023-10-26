@@ -14,17 +14,9 @@ type Props = {
 	coverImage: string | null | undefined;
 	author: Author;
 	slug: string;
-	commentCount: number;
 };
 
-export const MinimalPostPreview = ({
-	title,
-	date,
-	coverImage,
-	slug,
-	excerpt,
-	commentCount,
-}: Props) => {
+export const MinimalPostPreview = ({ title, date, coverImage, slug, excerpt }: Props) => {
 	const postURL = `/${slug}`;
 
 	return (

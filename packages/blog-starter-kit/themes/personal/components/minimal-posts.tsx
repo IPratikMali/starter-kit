@@ -19,7 +19,6 @@ export const MinimalPosts = ({ posts }: Props) => {
 						name: post.author.name,
 					}}
 					slug={post.slug}
-					commentCount={post.comments?.totalDocuments}
 					excerpt={post.brief}
 				/>
 			))}
