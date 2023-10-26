@@ -25,7 +25,7 @@ export const PersonalHeader = () => {
 		{ label: 'Software Eng', url: 'series/software-engineering-101' },
 		{ label: 'No Code', url: 'series/no-code' },
 		{ label: 'AI', url: 'series/artificial-intelligence' },
-		{ label: 'Mobile Dev', url: 'series/mobile-dev' },
+		{ label: 'Mobile Dev', url: 'series/mobile-development' },
 	];
 
 	const navList = (
