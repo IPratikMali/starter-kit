@@ -2,6 +2,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { resizeImage } from '@starter-kit/utils/image';
 import Link from 'next/link';
 import { PublicationNavbarItem } from '../generated/graphql';
+import { Button } from './button';
 import { Container } from './container';
 import { useAppContext } from './contexts/appContext';
 
@@ -11,7 +12,7 @@ function hasUrl(
 	return !!navbarItem.url && navbarItem.url.length > 0;
 }
 
-export const PersonalHeader = () => {
+export const Header = () => {
 	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '/';
 	const { publication } = useAppContext();
 	const PUBLICATION_LOGO = publication.preferences.darkMode?.logo || publication.preferences.logo;
@@ -82,31 +83,31 @@ export const PersonalHeader = () => {
             />
           </div> */}
 					<h1>
-						{' '}
 						<Link
-							className="flex flex-row items-center gap-2 text-lg font-bold leading-tight tracking-tight text-black dark:text-white"
-							href="/"
-							aria-label={`${publication.author.name}'s blog home page`}
+							href={'/'}
+							aria-label={`${publication.title} blog home page`}
+							className="flex flex-row items-center gap-3"
 						>
-							{' '}
-							{publication.author.profilePicture && (
-								<img
-									className="block h-8 w-8 rounded-full fill-current"
-									alt={publication.author.name}
-									src={resizeImage(publication.author.profilePicture, {
-										w: 400,
-										h: 400,
-										c: 'face',
-									})}
-								/>
-							)}{' '}
-							{publication.title}{' '}
-						</Link>{' '}
+							{PUBLICATION_LOGO ? (
+								<>
+									<img
+										className="block w-32 shrink-0 md:w-40"
+										alt={publication.title}
+										src={resizeImage(PUBLICATION_LOGO, { w: 320, h: 80 })}
+									/>
+									<span className="text-xl font-semibold text-white md:text-3xl">Blog</span>
+								</>
+							) : (
+								<span className="text-xl font-semibold text-white md:text-4xl">
+									{publication.title}
+								</span>
+							)}
+						</Link>
 					</h1>
 				</div>
-				<div className="col-span-2 flex flex-row items-center justify-end gap-5 text-xl text-slate-300 lg:col-span-3">
-					<nav className="sm-max:hidden lg:block">{navList}</nav>
-					{/* <Button href={baseUrl} as="a" type="primary" label="Book a demo" /> */}
+				<div className="col-span-2 flex flex-row items-center justify-end gap-5 text-slate-300 lg:col-span-3">
+					<nav className="hidden lg:block">{navList}</nav>
+					<Button href={baseUrl} as="a" type="primary" label="Book a demo" />
 				</div>
 			</Container>
 		</header>

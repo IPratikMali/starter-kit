@@ -13,15 +13,15 @@ export const CoverImage = ({ title, src, slug, priority = false }: Props) => {
 
 	const image = (
 		<div className="relative pt-[52.5%]">
-			<Image
-				src={src}
-				alt={`Cover Image for ${title}`}
-				className="w-full rounded-md border object-cover hover:opacity-90 dark:border-neutral-800"
-				fill
-				unoptimized
-				priority={priority}
-			/>
-		</div>
+  <Image
+    src={src}
+    alt={`Cover Image for ${title}`}
+    className="w-full h-full rounded-md border object-cover hover:opacity-90 dark:border-neutral-800"
+    fill
+    unoptimized
+    priority={priority}
+  />
+</div>
 	);
 	return (
 		<div className="sm:mx-0">

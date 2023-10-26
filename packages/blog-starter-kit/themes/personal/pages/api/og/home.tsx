@@ -112,7 +112,7 @@ export default async function handler(req: NextRequest) {
 									{followers > 0 && (
 										<p tw="m-0 mr-5 flex flex-row items-center">
 											<strong tw="mr-2">{kFormatter(followers)}</strong>
-											<span>follower{followers === 1 ? '' : 's'}</span>
+											<span>follower{followers === 1 ? '' : 's'}</span>	
 										</p>
 									)}
 									{/* If no of articles are zero, hide this p tag */}
