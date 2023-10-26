@@ -4,7 +4,7 @@ import { DEFAULT_AVATAR } from '../utils/const';
 type Props = {
 	username: string;
 	name: string;
-	picture: string;
+	picture: string | null | undefined;
 	size: number;
 };
 

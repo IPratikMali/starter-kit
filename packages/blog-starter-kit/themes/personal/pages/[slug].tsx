@@ -13,6 +13,7 @@ import { DateFormatter } from '../components/date-formatter';
 import { Layout } from '../components/layout';
 import { MarkdownToHtml } from '../components/markdown-to-html';
 import { PersonalHeader } from '../components/personal-theme-header';
+import { PostComments } from '../components/post-comments';
 import { PostTOC } from '../components/post-toc';
 import {
 	PageByPublicationDocument,
@@ -158,6 +159,8 @@ export default function PostOrPage({ publication, post, page }: Props) {
 						{/* Article content */}
 						<article className="flex flex-col items-start gap-10 pb-10">
 							{post ? Post(publication, post) : Page(page)}
+							{/* Add the PostComments component below the article content */}
+							{post && <PostComments />}
 						</article>
 					</div>
 				</Container>

@@ -2,8 +2,10 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { resizeImage } from '@starter-kit/utils/image';
 import Link from 'next/link';
 import { PublicationNavbarItem } from '../generated/graphql';
+import { Button } from './button';
 import { Container } from './container';
 import { useAppContext } from './contexts/appContext';
+import HamburgerSVG from './icons/svgs/HamburgerSVG';
 
 function hasUrl(
 	navbarItem: PublicationNavbarItem,
@@ -38,9 +40,12 @@ export const PersonalHeader = () => {
 				<li>
 					<DropdownMenu.Root>
 						<DropdownMenu.Trigger asChild>
-							<button className="transition-200 block rounded-full p-2 transition-colors hover:bg-white hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white">
-								More
-							</button>
+							<Button
+								type="outline"
+								label=""
+								icon={<HamburgerSVG className="h-5 w-5 stroke-current" />}
+								className="rounded-xl border-transparent !px-3 !py-2 text-white hover:bg-neutral-800 lg:hidden"
+							/>
 						</DropdownMenu.Trigger>
 
 						<DropdownMenu.Portal>
@@ -70,17 +75,9 @@ export const PersonalHeader = () => {
 	);
 
 	return (
-		<header className="border-b bg-slate-950 py-10 dark:border-neutral-800 dark:bg-neutral-900">
+		<header className="dark-bg-neutral-900 border-b bg-slate-950 py-10 dark:border-neutral-800">
 			<Container className="grid grid-cols-4 gap-5 px-5">
 				<div className="col-span-2 flex flex-1 flex-row items-center gap-2 lg:col-span-1">
-					{/* <div className="lg:hidden">
-            <Button
-              type="outline"
-              label=""
-              icon={<HamburgerSVG className="w-5 h-5 stroke-current" />}
-              className="!px-3 !py-2 text-white border-transparent rounded-xl hover:bg-neutral-800"
-            />
-          </div> */}
 					<h1>
 						{' '}
 						<Link
@@ -105,7 +102,13 @@ export const PersonalHeader = () => {
 					</h1>
 				</div>
 				<div className="col-span-2 flex flex-row items-center justify-end gap-5 text-xl text-slate-300 lg:col-span-3">
-					<nav className="sm-max:hidden lg:block">{navList}</nav>
+					<nav className="hidden lg:block">{navList}</nav>
+					<Button
+						type="outline"
+						label=""
+						icon={<HamburgerSVG className="h-5 w-5 stroke-current" />}
+						className="rounded-xl border-transparent !px-3 !py-2 text-white hover:bg-neutral-800 lg:hidden"
+					/>
 					{/* <Button href={baseUrl} as="a" type="primary" label="Book a demo" /> */}
 				</div>
 			</Container>
