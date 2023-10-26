@@ -19,14 +19,13 @@ export const PersonalHeader = () => {
 	const navbarItems = publication.preferences.navbarItems.filter(hasUrl);
 	const visibleItems = navbarItems.slice(0, 3);
 	const hiddenItems = navbarItems.slice(3);
+	const domainName = 'https://starter-kit-personal.vercel.app/'; // Replace with your actual domain name
+
 	const customNavList = [
-		{
-			label: 'Software Eng',
-			url: 'https://starter-kit-personal.vercel.app/series/software-engineering-101',
-		},
-		{ label: 'AI', url: 'https://starter-kit-personal.vercel.app/series/artificial-intelligence' },
-		{ label: 'No-Code', url: 'https://starter-kit-personal.vercel.app/series/no-code' },
-		{ label: 'Mobile Dev', url: 'https://starter-kit-personal.vercel.app/series/mobile-dev' },
+		{ label: 'Software Eng', url: 'series/software-engineering-101' },
+		{ label: 'No Code', url: 'series/no-code' },
+		{ label: 'AI', url: 'series/artificial-intelligence' },
+		{ label: 'Mobile Dev', url: 'series/mobile-dev' },
 		// Add more custom items as needed
 	];
 
@@ -35,8 +34,7 @@ export const PersonalHeader = () => {
 			{customNavList.map((item) => (
 				<li key={item.url}>
 					<a
-						href={item.url}
-						target="_blank" // Modify target and rel attributes as needed
+						href={`${domainName}${item.url}`} // Concatenate domainName and URL
 						rel="noopener noreferrer"
 						className="transition-200 block max-w-[200px] truncate text-ellipsis whitespace-nowrap rounded-full p-2 transition-colors hover:bg-white hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
 					>
