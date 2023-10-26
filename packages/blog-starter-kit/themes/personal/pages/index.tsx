@@ -183,7 +183,10 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 
 					{posts.length > 19 && <MinimalPosts context="home" posts={posts.slice(19)} />}
 					{!loadedMore && pageInfo.hasNextPage && pageInfo.endCursor && (
-						<button className="bg-white" onClick={loadMore}>
+						<button
+							className="mx-auto w-3/4 rounded bg-white p-1 hover:bg-orange-300"
+							onClick={loadMore}
+						>
 							Load more
 						</button>
 					)}

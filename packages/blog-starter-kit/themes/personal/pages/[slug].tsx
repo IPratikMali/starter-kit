@@ -10,10 +10,10 @@ import { Container } from '../components/container';
 import { AppProvider } from '../components/contexts/appContext';
 import { CoverImage } from '../components/cover-image';
 import { DateFormatter } from '../components/date-formatter';
-import { Footer } from '../components/footer';
 import { Layout } from '../components/layout';
 import { MarkdownToHtml } from '../components/markdown-to-html';
 import { PersonalHeader } from '../components/personal-theme-header';
+import { PostTOC } from '../components/post-toc';
 import {
 	PageByPublicationDocument,
 	PageByPublicationQuery,
@@ -49,7 +49,7 @@ const Post = (publication: PublicationFragment, post: PostFullFragment) => {
 		<li key={tag.id}>
 			<Link
 				href={`/tag/${tag.slug}`}
-				className="block rounded-full border px-2 py-1 font-medium hover:bg-slate-50 dark:border-neutral-800 dark:hover:bg-neutral-800 md:px-4"
+				className="block rounded-full border px-2 py-1 font-medium hover:bg-slate-50 dark:border-neutral-800 dark:hover:bg-orange-300 dark:hover:text-black md:px-4"
 			>
 				#{tag.slug}
 			</Link>
@@ -70,9 +70,12 @@ const Post = (publication: PublicationFragment, post: PostFullFragment) => {
 				<title>{post.seo?.title || post.title}</title>
 				<link rel="canonical" href={post.url} />
 				<meta name="description" content={post.seo?.description || post.subtitle || post.brief} />
-				<meta property="twitter:card" content="summary_large_image"/>
+				<meta property="twitter:card" content="summary_large_image" />
 				<meta property="twitter:title" content={post.seo?.title || post.title} />
-				<meta property="twitter:description" content={post.seo?.description || post.subtitle || post.brief} />
+				<meta
+					property="twitter:description"
+					content={post.seo?.description || post.subtitle || post.brief}
+				/>
 				<meta
 					property="og:image"
 					content={
@@ -97,7 +100,7 @@ const Post = (publication: PublicationFragment, post: PostFullFragment) => {
 				/>
 				<style dangerouslySetInnerHTML={{ __html: highlightJsMonokaiTheme }}></style>
 			</Head>
-			<h1 className="text-4xl leading-tight tracking-tight text-black dark:text-white">
+			<h1 className="font-custom text-4xl font-bold leading-tight tracking-tight text-black dark:text-white">
 				{post.title}
 			</h1>
 			<div className="text-neutral-600 dark:text-neutral-400">
@@ -110,7 +113,7 @@ const Post = (publication: PublicationFragment, post: PostFullFragment) => {
 			)}
 			<MarkdownToHtml contentMarkdown={post.content.markdown} />
 			{(post.tags ?? []).length > 0 && (
-				<div className="mx-auto w-full text-slate-600 dark:text-neutral-300 md:max-w-screen-md">
+				<div className="mx-auto w-full px-5 text-slate-600 dark:text-neutral-300 md:max-w-screen-md">
 					<ul className="flex flex-row flex-wrap items-center gap-2">{tagsList}</ul>
 				</div>
 			)}
@@ -138,12 +141,25 @@ export default function PostOrPage({ publication, post, page }: Props) {
 	return (
 		<AppProvider publication={publication} post={post}>
 			<Layout>
-				<Container className="mx-auto flex max-w-2xl flex-col items-stretch gap-10 px-5 py-10">
-					<PersonalHeader />
-					<article className="flex flex-col items-start gap-10 pb-10">
-						{post ? Post(publication, post) : Page(page)}
-					</article>
-					<Footer />
+				<Container className="mx-auto flex gap-10 px-8 py-10 md:flex-row">
+					<div className="scrollbar-hidden sm-max:hidden md:w-auto">
+						{/* Table of Contents */}
+						{post && post.features.tableOfContents.isEnabled && (
+							<div className="toc-wrapper">
+								<PostTOC />
+							</div>
+						)}
+					</div>
+
+					<div className="md:w-3/4">
+						{' '}
+						{/* Adjust the width as needed */}
+						<PersonalHeader />
+						{/* Article content */}
+						<article className="flex flex-col items-start gap-10 pb-10">
+							{post ? Post(publication, post) : Page(page)}
+						</article>
+					</div>
 				</Container>
 			</Layout>
 		</AppProvider>

@@ -60,6 +60,7 @@ export type AudioUrls = {
   male?: Maybe<Scalars['String']['output']>;
 };
 
+
 /** The status of the backup i.e., success or failure. */
 export enum BackupStatus {
   /** The backup failed. */
