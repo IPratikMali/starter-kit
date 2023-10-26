@@ -22,7 +22,7 @@ export const PersonalHeader = () => {
 	const customNavList = [
 		{
 			label: 'Software Eng',
-			url: 'https://starter-kit-personal.vercel.app/series/software-engineering',
+			url: 'https://starter-kit-personal.vercel.app/series/software-engineering-101',
 		},
 		{ label: 'AI', url: 'https://starter-kit-personal.vercel.app/series/artificial-intelligence' },
 		{ label: 'No-Code', url: 'https://starter-kit-personal.vercel.app/series/no-code' },
