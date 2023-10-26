@@ -20,7 +20,6 @@ export const MinimalPostPreview = ({ title, date, coverImage, slug, excerpt }: P
 	const postURL = `/${slug}`;
 
 	return (
-		//Middle articles Starts here
 		<div className="w-401 h-400 flex bg-black shadow-md sm:h-auto sm:w-full sm:flex-col md:h-auto md:w-full md:flex-row">
 			{/* Left Section (Title and Date) */}
 			<div className="mh-400 sm-max:w-full w-80 bg-slate-800 hover:bg-black sm:h-auto sm:w-full md:h-auto md:w-1/2">
@@ -53,6 +52,5 @@ export const MinimalPostPreview = ({ title, date, coverImage, slug, excerpt }: P
 				</div>
 			</div>
 		</div>
-		// Middle articles ends here
 	);
 };
