@@ -1,4 +1,3 @@
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { resizeImage } from '@starter-kit/utils/image';
 import Link from 'next/link';
 import { PublicationNavbarItem } from '../generated/graphql';
@@ -20,14 +19,24 @@ export const PersonalHeader = () => {
 	const navbarItems = publication.preferences.navbarItems.filter(hasUrl);
 	const visibleItems = navbarItems.slice(0, 3);
 	const hiddenItems = navbarItems.slice(3);
+	const customNavList = [
+		{
+			label: 'Software Eng',
+			url: 'https://starter-kit-personal.vercel.app/series/software-engineering',
+		},
+		{ label: 'AI', url: 'https://starter-kit-personal.vercel.app/series/artificial-intelligence' },
+		{ label: 'No-Code', url: 'https://starter-kit-personal.vercel.app/series/no-code' },
+		{ label: 'Mobile Dev', url: 'https://starter-kit-personal.vercel.app/series/mobile-dev' },
+		// Add more custom items as needed
+	];
 
 	const navList = (
 		<ul className="flex flex-row items-center gap-2 text-white">
-			{visibleItems.map((item) => (
+			{customNavList.map((item) => (
 				<li key={item.url}>
 					<a
 						href={item.url}
-						target="_blank"
+						target="_blank" // Modify target and rel attributes as needed
 						rel="noopener noreferrer"
 						className="transition-200 block max-w-[200px] truncate text-ellipsis whitespace-nowrap rounded-full p-2 transition-colors hover:bg-white hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
 					>
@@ -36,43 +45,62 @@ export const PersonalHeader = () => {
 				</li>
 			))}
 
-			{hiddenItems.length > 0 && (
-				<li>
-					<DropdownMenu.Root>
-						<DropdownMenu.Trigger asChild>
-							<Button
-								type="outline"
-								label=""
-								icon={<HamburgerSVG className="h-5 w-5 stroke-current" />}
-								className="rounded-xl border-transparent !px-3 !py-2 text-white hover:bg-neutral-800 lg:hidden"
-							/>
-						</DropdownMenu.Trigger>
-
-						<DropdownMenu.Portal>
-							<DropdownMenu.Content
-								className="w-48 rounded border border-gray-300 bg-white text-neutral-950 shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:text-white"
-								align="end"
-								sideOffset={5}
-							>
-								{hiddenItems.map((item) => (
-									<DropdownMenu.Item asChild key={item.url}>
-										<a
-											href={item.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="transition-200 block truncate p-2 transition-colors hover:bg-slate-100 hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
-										>
-											{item.label}
-										</a>
-									</DropdownMenu.Item>
-								))}
-							</DropdownMenu.Content>
-						</DropdownMenu.Portal>
-					</DropdownMenu.Root>
-				</li>
-			)}
+			{/* Include the hidden items if needed */}
 		</ul>
 	);
+
+	// const navList = (
+	// 	<ul className="flex flex-row items-center gap-2 text-white">
+	// 		{visibleItems.map((item) => (
+	// 			<li key={item.url}>
+	// 				<a
+	// 					href={item.url}
+	// 					target="_blank"
+	// 					rel="noopener noreferrer"
+	// 					className="transition-200 block max-w-[200px] truncate text-ellipsis whitespace-nowrap rounded-full p-2 transition-colors hover:bg-white hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
+	// 				>
+	// 					{item.label}
+	// 				</a>
+	// 			</li>
+	// 		))}
+
+	// 		{hiddenItems.length > 0 && (
+	// 			<li>
+	// 				<DropdownMenu.Root>
+	// 					<DropdownMenu.Trigger asChild>
+	// 						<Button
+	// 							type="outline"
+	// 							label=""
+	// 							icon={<HamburgerSVG className="h-5 w-5 stroke-current" />}
+	// 							className="rounded-xl border-transparent !px-3 !py-2 text-white hover:bg-neutral-800 lg:hidden"
+	// 						/>
+	// 					</DropdownMenu.Trigger>
+
+	// 					<DropdownMenu.Portal>
+	// 						<DropdownMenu.Content
+	// 							className="w-48 rounded border border-gray-300 bg-white text-neutral-950 shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:text-white"
+	// 							align="end"
+	// 							sideOffset={5}
+	// 						>
+	// 							{hiddenItems.map((item) => (
+	// 								<DropdownMenu.Item asChild key={item.url}>
+	// 									<a
+	// 										href={item.url}
+	// 										target="_blank"
+	// 										rel="noopener noreferrer"
+	// 										className="transition-200 block truncate p-2 transition-colors hover:bg-slate-100 hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
+	// 									>
+	// 										{item.label}
+	// 									</a>
+	// 								</DropdownMenu.Item>
+	// 							))}
+	// 						</DropdownMenu.Content>
+	// 					</DropdownMenu.Portal>
+	// 				</DropdownMenu.Root>
+	// 			</li>
+	// 		)}
+	// 	</ul>
+	// );
 
 	return (
 		<header className="dark-bg-neutral-900 border-b bg-slate-950 py-10 dark:border-neutral-800">
