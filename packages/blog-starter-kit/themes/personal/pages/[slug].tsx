@@ -142,7 +142,7 @@ export default function PostOrPage({ publication, post, page }: Props) {
 	return (
 		<AppProvider publication={publication} post={post}>
 			<Layout>
-				<Container className="mx-auto flex gap-10 px-8 py-10 md:flex-row">
+				<Container className="mx-auto flex gap-10 px-8 py-10 md:col-span-3 md:flex-row">
 					<div className=" sm-max:hidden md:w-1/4">
 						{/* Table of Contents */}
 						{post && post.features.tableOfContents.isEnabled && (
@@ -151,10 +151,7 @@ export default function PostOrPage({ publication, post, page }: Props) {
 							</div>
 						)}
 					</div>
-
 					<div className="md:w-3/4">
-						{' '}
-						{/* Adjust the width as needed */}
 						<PersonalHeader />
 						{/* Article content */}
 						<article className="flex flex-col items-start gap-10 pb-10">
