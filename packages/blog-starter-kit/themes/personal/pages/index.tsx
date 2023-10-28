@@ -115,7 +115,7 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 					)}
 
 					{/* Display the HeroPost component for the hero post */}
-					{posts.length > 0 && (
+					{posts.length > 1 && (
 						<HeroPost
 							title={posts[1].title}
 							coverImage={posts[1].coverImage?.url || ''}
@@ -126,7 +126,7 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 					)}
 					{/* Display the MinimalPosts component for minimal posts */}
 
-					{posts.length > 1 && (
+					{posts.length > 0 && (
 						<MinimalPosts
 							context="home"
 							posts={posts.slice(0, 10).filter((post, index) => index !== 1)}
