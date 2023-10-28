@@ -126,23 +126,29 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 					)}
 					{/* Display the MinimalPosts component for minimal posts */}
 
-					{posts.length > 2 && <MinimalPosts context="home" posts={posts.slice(2, 10)} />}
+					{/* {posts.length > 1 && <MinimalPosts context="home" posts={posts.slice(1, 9)} />} */}
+					{posts.length > 1 && (
+						<MinimalPosts
+							context="home"
+							posts={posts.slice(1, 10).filter((post, index) => index !== 1)}
+						/>
+					)}
 
 					{/* Display the MiddlePosts component for the MiddlePost */}
-					{posts.length > 11 && (
+					{posts.length > 10 && (
 						<MiddlePost
-							title={posts[11].title}
-							coverImage={posts[11].coverImage?.url || ''}
-							date={posts[11].publishedAt}
-							excerpt={posts[11].brief}
-							slug={posts[11].slug}
+							title={posts[10].title}
+							coverImage={posts[10].coverImage?.url || ''}
+							date={posts[10].publishedAt}
+							excerpt={posts[10].brief}
+							slug={posts[10].slug}
 						/>
 					)}
 					{/* Display the SquarePosts component for the last 8 posts */}
 					<section className="sm-max:grid-cols-1 grid grid-cols-2 gap-14 lg:grid-cols-3">
-						{posts.length > 12 &&
+						{posts.length > 11 &&
 							posts
-								.slice(12, 18)
+								.slice(11, 17)
 								.map((post) => (
 									<SquarePosts
 										key={post.id}
@@ -156,13 +162,13 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 					</section>
 
 					{/* Display the LastPost component for the last-post */}
-					{posts.length > 19 && (
+					{posts.length > 18 && (
 						<LastPost
-							title={posts[19].title}
-							coverImage={posts[19].coverImage?.url || ''}
-							date={posts[19].publishedAt}
-							excerpt={posts[19].brief}
-							slug={posts[19].slug}
+							title={posts[18].title}
+							coverImage={posts[18].coverImage?.url || ''}
+							date={posts[18].publishedAt}
+							excerpt={posts[18].brief}
+							slug={posts[18].slug}
 						/>
 					)}
 					{/* <section className="sm-max:grid-cols-1 grid grid-cols-2 gap-14 lg:grid-cols-3">
@@ -181,7 +187,7 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 								))}
 					</section> */}
 
-					{posts.length > 20 && <MinimalPosts context="home" posts={posts.slice(20)} />}
+					{posts.length > 19 && <MinimalPosts context="home" posts={posts.slice(19)} />}
 					{!loadedMore && pageInfo.hasNextPage && pageInfo.endCursor && (
 						<button
 							className="mx-auto w-3/4 rounded bg-white p-1 hover:bg-orange-300"
