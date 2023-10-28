@@ -130,7 +130,7 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 					{posts.length > 1 && (
 						<MinimalPosts
 							context="home"
-							posts={posts.slice(0, 10).filter((post, index) => index !== 1)}
+							posts={posts.slice(0, 9).filter((post, index) => index !== 1)}
 						/>
 					)}
 
