@@ -134,6 +134,11 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 						/>
 					)}
 
+					{/* Preload the coverImage */}
+					{posts.length > 0 && (
+						<link rel="preload" as="image" href={posts[1].coverImage?.url || ''} />
+					)}
+
 					{/* Display the MiddlePosts component for the MiddlePost */}
 					{posts.length > 10 && (
 						<MiddlePost
