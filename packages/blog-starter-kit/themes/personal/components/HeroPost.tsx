@@ -12,7 +12,7 @@ export const HeroPost = ({ title, coverImage, date, excerpt, slug }: Props) => {
 	const postURL = `/${slug}`;
 
 	const backgroundStyles = {
-		backgroundImage: `url(${coverImage})`,
+		backgroundImage: `url(${coverImage}`,
 		backgroundSize: 'cover',
 		backgroundPosition: 'center',
 	};
