@@ -114,6 +114,10 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 						</div>
 					)}
 
+					{/* Preload the coverImage */}
+					{posts.length > 0 && (
+						<link rel="preload" as="image" href={posts[1].coverImage?.url || ''} />
+					)}
 					{/* Display the HeroPost component for the hero post */}
 					{posts.length > 1 && (
 						<HeroPost
@@ -132,11 +136,6 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 							context="home"
 							posts={posts.slice(0, 9).filter((post, index) => index !== 1)}
 						/>
-					)}
-
-					{/* Preload the coverImage */}
-					{posts.length > 0 && (
-						<link rel="preload" as="image" href={posts[1].coverImage?.url || ''} />
 					)}
 
 					{/* Display the MiddlePosts component for the MiddlePost */}
