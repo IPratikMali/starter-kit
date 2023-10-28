@@ -126,28 +126,23 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 					)}
 					{/* Display the MinimalPosts component for minimal posts */}
 
-					{posts.length > 0 && (
-						<MinimalPosts
-							context="home"
-							posts={posts.slice(0, 10).filter((post, index) => index !== 1)}
-						/>
-					)}
+					{posts.length > 2 && <MinimalPosts context="home" posts={posts.slice(2, 10)} />}
 
 					{/* Display the MiddlePosts component for the MiddlePost */}
-					{posts.length > 10 && (
+					{posts.length > 11 && (
 						<MiddlePost
-							title={posts[10].title}
-							coverImage={posts[10].coverImage?.url || ''}
-							date={posts[10].publishedAt}
-							excerpt={posts[10].brief}
-							slug={posts[10].slug}
+							title={posts[11].title}
+							coverImage={posts[11].coverImage?.url || ''}
+							date={posts[11].publishedAt}
+							excerpt={posts[11].brief}
+							slug={posts[11].slug}
 						/>
 					)}
 					{/* Display the SquarePosts component for the last 8 posts */}
 					<section className="sm-max:grid-cols-1 grid grid-cols-2 gap-14 lg:grid-cols-3">
-						{posts.length > 11 &&
+						{posts.length > 12 &&
 							posts
-								.slice(11, 17)
+								.slice(12, 18)
 								.map((post) => (
 									<SquarePosts
 										key={post.id}
@@ -161,13 +156,13 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 					</section>
 
 					{/* Display the LastPost component for the last-post */}
-					{posts.length > 18 && (
+					{posts.length > 19 && (
 						<LastPost
-							title={posts[18].title}
-							coverImage={posts[18].coverImage?.url || ''}
-							date={posts[18].publishedAt}
-							excerpt={posts[18].brief}
-							slug={posts[18].slug}
+							title={posts[19].title}
+							coverImage={posts[19].coverImage?.url || ''}
+							date={posts[19].publishedAt}
+							excerpt={posts[19].brief}
+							slug={posts[19].slug}
 						/>
 					)}
 					{/* <section className="sm-max:grid-cols-1 grid grid-cols-2 gap-14 lg:grid-cols-3">
