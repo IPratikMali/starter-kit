@@ -117,17 +117,21 @@ export default function Index({ publication, initialPosts, initialPageInfo }: Pr
 					{/* Display the HeroPost component for the hero post */}
 					{posts.length > 0 && (
 						<HeroPost
-							title={posts[0].title}
-							coverImage={posts[0].coverImage?.url || ''}
-							date={posts[0].publishedAt}
-							excerpt={posts[0].brief}
-							slug={posts[0].slug}
+							title={posts[1].title}
+							coverImage={posts[1].coverImage?.url || ''}
+							date={posts[1].publishedAt}
+							excerpt={posts[1].brief}
+							slug={posts[1].slug}
 						/>
 					)}
 					{/* Display the MinimalPosts component for minimal posts */}
 
-					{posts.length > 1 && <MinimalPosts context="home" posts={posts.slice(1, 9)} />}
-
+					{posts.length > 1 && (
+						<MinimalPosts
+							context="home"
+							posts={posts.slice(0, 9).filter((post, index) => index !== 1)}
+						/>
+					)}
 					{/* Display the MiddlePosts component for the MiddlePost */}
 					{posts.length > 10 && (
 						<MiddlePost
